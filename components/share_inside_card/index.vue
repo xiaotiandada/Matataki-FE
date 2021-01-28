@@ -55,7 +55,8 @@
       <span
         :class="!shareCard && 'card-sharehall'"
         class="card-text"
-      >{{ card.summary || $t('not') }}</span>
+        v-html="card.short_content_share || card.summary || $t('not')"
+      />
     </div>
     <span
       v-if="!shareCard && cardType === 'edit'"
@@ -173,7 +174,8 @@ export default {
 
 <style lang="less" scoped>
 .card {
-  background: #EAEAEA;
+  background-color: transparent;
+  border: 1px solid #F2F4F7;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -273,6 +275,10 @@ export default {
       padding: 0;
       margin: 0;
       white-space: pre-wrap;
+      word-break: break-all;
+      /deep/ a {
+        color: rgb(47, 174, 227)
+      }
     }
     .card-sharehall {
       display: -webkit-box;

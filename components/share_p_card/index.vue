@@ -154,24 +154,23 @@ export default {
 
 <style lang="less" scoped>
 .card {
-  background: #EAEAEA;
+  background-color: transparent;
+  border: 1px solid #F2F4F7;
   border-radius: 6px;
   display: flex;
-  align-items: center;
+  // align-items: center;
   position: relative;
-  padding: 10px;
   box-sizing: border-box;
   text-decoration: none;
   cursor: pointer;
   color: #000;
   &-cover {
-    width: 120px;
-    height: 60px;
+    width: 240px;
+    height: 120px;
     border-radius: 3px;
     overflow: hidden;
-    margin-right: 10px;
-    flex: 0 0 120px;
-    border: 1px solid #e0e0e0;
+    flex: 0 0 240px;
+    border-right: 1px solid #e0e0e0;
     box-sizing: border-box;
     img {
       width: 100%;
@@ -201,8 +200,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 60px;
-    width: 100%;
+    padding: 10px;
   }
   &-text {
     font-size:15px;
