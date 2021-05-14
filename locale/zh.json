@@ -420,10 +420,10 @@
     "importSuccess": "导入成功",
     "importError": "导入失败,目前只支持: 链闻、橙皮书、微信、知乎专栏、Matters、简书、币乎、Steemit。",
     "whereToPublish": "文章储存位置",
-    "whereToPublishDescription": "当您把文章存储位置设置成GitHub之后，文章将保存到您的GitHub仓库，此选项发布后不可修改",
+    "whereToPublishDescription": "如果您创建了独立子站，可以将文章保存到独立子站，保存到独立子站中的文章将被渲染到您的独立子站中，此选项发布后不可修改",
     "whereToPublishHelp": "查看更详细的信息",
     "publishToIPFS": "IPFS",
-    "publishToGithub": "Github",
+    "publishToGithub": "独立子站",
     "originalStatement": "原创声明",
     "statement": "勾选本原创声明，即代表您确认并承诺该文章，包括文章中的使用的图片等其他元素，是由您本人（或持有该账号之组织）独立创作完成，或者已取得原作权利人的使用许可。有如下情况的文章请勿勾选本原创声明：",
     "statement1": "1.歪曲、篡改、抄袭、剽窃他人创作而产生的作品，",
@@ -839,10 +839,10 @@
     }
   },
   "githubHash": {
-    "link": "GitHub仓库",
-    "fileHash": "文件Hash",
+    "link": "独立子站",
+    "fileHash": "文件 Hash",
     "filePath": "存储地址",
-    "description": "本文内容存储于GitHub"
+    "description": "本文内容存储于 GitHub"
   },
   "group": {
     "joinFanBase": "加入{0}粉丝群",
@@ -1650,7 +1650,7 @@
   "mttk-points": "MTTK积分",
   "indie-blog": {
     "experimental-feature": "实验性功能，尚不稳定",
-    "page-tile": "独立子站",
+    "page-title": "独立子站",
     "status-loading": "独立子站状态加载中",
     "status-load-failed": "独立子站状态加载失败，请稍后重试",
     "retry": "重试",
@@ -1677,18 +1677,38 @@
     "done": "完成",
     "step": "步骤",
     "you-are-done": "您已完成创建独立子站的所有步骤，点击下方按钮即可进入设置页面",
+    "begin-setting": "开始设置",
     "go-settings": "前往设置页面",
     "repo-name-format-error": "GitHub 仓库名称格式不正确",
     "ok": "好",
     "cancel": "取消",
     "repo-exists": "可能是名为 {name} 的仓库已经存在",
     "repo-name-rule": "GitHub 仓库名应当仅包含英文字母大小写、中划线和半角句号，例如 kawaii.lemon-neko",
-    "deployed": "您的独立子站已被部署至",
+    "deployed": "您的独立子站已被部署至：",
+    "not-deployed-part1": "您的独立子站尚未完成部署，请到",
+    "not-deployed-part2": "仓库设置",
+    "not-deployed-part3": "中检查 GitHub Pages 开启状态",
+    "deploying": "您的独立子站即将部署至：",
     "this-user-has-been-deployed-indie-blog": "此用户已部署独立子站",
-    "two-step-confirm": "您修改了特殊项目，需要进行二次确认",
+    "two-step-confirm": "您修改了重要项目，需要向您二次确认",
     "timezone-modified": "时间区域：此项会影响子站中的时间显示格式",
     "theme-modified": "主题：此项会影响子站的排版",
     "is-continue": "您确认要进行这些修改吗？",
-    "no-items-modified": "您没有修改任何内容"
+    "no-items-modified": "您没有修改任何内容",
+    "refresh-status": "刷新状态",
+    "deploy-status-loading": "部署状态加载中...",
+    "cannot-save-to-indie-blog": "您没有创建独立子站，因此无法将文章储存至独立子站",
+    "auto-detect": "自动检测",
+    "enter-indie-blog": "子站",
+    "repository-deleted": "获取子站状态失败，请检查用于子站的仓库是否存在并且没有被设为私有的"
+  },
+  "languages": {
+    "en": "English",
+    "zh": "简体中文",
+    "fr": "français",
+    "zh-TW": "繁體中文（台灣）",
+    "zh-HK": "繁體中文（港澳地區）",
+    "es": "Español",
+    "ja": "日本語"
   }
 }
