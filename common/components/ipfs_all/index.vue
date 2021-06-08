@@ -1,12 +1,5 @@
 <template>
   <div class="ipfs">
-    <el-dialog
-      :title="historyDialogTitle"
-      :visible.sync="dialogVisible"
-      class="history-dialog"
-    >
-      <ArticleHistory :article-ipfs-array="articleIpfsArray" />
-    </el-dialog>
     <el-popover
       placement="top"
       trigger="hover"
@@ -15,17 +8,11 @@
     >
       <div class="components-ipfs_all">
         <!--文章保存位置-->
-        <p v-if="!isPublishedOnGithub" class="ipfs_all__title">
-          {{ $t("ipfsHash.link") }}
-          <span style="float: right;">
-            <el-button
-              type="text"
-              @click="dialogVisible = true"
-            >{{ $t('ipfsHash.historyBtn') }}</el-button>
-          </span>
-        </p>
-        <p v-else class="ipfs_all__title">
-          {{ $t("githubHash.link") }}
+        <p v-show="isPublishedOnGithub" class="ipfs_all__title">
+          <a
+            class="github-history-link"
+            :href="githubBlogLink"
+          >{{ $t('githubHash.link') }}</a>
           <span style="float: right;">
             <a
               class="github-history-link"
@@ -33,28 +20,54 @@
             >{{ $t('ipfsHash.historyBtn') }}</a>
           </span>
         </p>
+        <p>
+          <a
+            class="github-history-link"
+            :href="githubBlogArticleLink"
+          >
+            {{ $t('githubHash.indieArticle') }}
+            <i class="el-icon-position" />
+          </a>
+        </p>
+        <p v-show="!isPublishedOnGithub" class="ipfs_all__title">
+          {{ $t("ipfsHash.link") }}
+          <el-button
+            type="text"
+            style="float: right;"
+            @click="dialogVisible = true"
+          >
+            {{ $t('ipfsHash.historyBtn') }}
+          </el-button>
+        </p>
 
         <!--文章Hash-->
-        <div v-if="hash" class="ipfs_all__address">
+        <div v-show="hash" class="ipfs_all__address">
           <p>{{ isPublishedOnGithub ? 'File Hash: ' + hash : 'IPFS Hash: ' + hash }}</p>
-
           <svg-icon icon-class="copy" class="icon" @click="copy(hash)" />
         </div>
-        <p v-else class="ipfs_all__not">
+        <p v-show="!hash" class="ipfs_all__not">
           {{ $t("not") }}
         </p>
 
         <!--文章保存位置：标题-->
-        <p v-if="!isPublishedOnGithub" class="ipfs_all__title">
-          {{ $t("ipfsHash.publicNode") }}
+        <p v-if="isPublishedOnGithub" class="ipfs_all__title">
+          {{ $t("githubHash.filePath") }}
         </p>
         <p v-else class="ipfs_all__title">
-          {{ $t("githubHash.filePath") }}
+          {{ $t("ipfsHash.publicNode") }}
         </p>
 
         <!--文章保存位置：详细地址-->
         <template v-if="hash">
-          <template v-if="!isPublishedOnGithub">
+          <template v-if="isPublishedOnGithub">
+            <div
+              class="ipfs_all__link"
+            >
+              <a :href="githubLink" target="_blank"> {{ githubLink }} </a>
+              <svg-icon icon-class="arrow" class="icon" />
+            </div>
+          </template>
+          <template v-else>
             <div
               v-for="(item, index) in link"
               :key="index"
@@ -64,16 +77,8 @@
               <svg-icon icon-class="arrow" class="icon" />
             </div>
           </template>
-          <template v-else>
-            <div
-              class="ipfs_all__link"
-            >
-              <a :href="githubLink" target="_blank"> {{ githubLink }} </a>
-              <svg-icon icon-class="arrow" class="icon" />
-            </div>
-          </template>
         </template>
-        <p v-else class="ipfs_all__not">
+        <p v-show="!hash" class="ipfs_all__not">
           {{ $t("not") }}
         </p>
 
@@ -81,8 +86,17 @@
           {{ isPublishedOnGithub ? $t('githubHash.description') : $t('ipfsHash.slogan') }}
         </p>
       </div>
-      <svg-icon slot="reference" icon-class="ipfs" class="ipfs_all__icon" />
+      <div slot="reference" class="ipfs_box">
+        <svg-icon icon-class="ipfs" class="ipfs_all__icon" />
+      </div>
     </el-popover>
+    <el-dialog
+      :title="historyDialogTitle"
+      :visible.sync="dialogVisible"
+      class="history-dialog"
+    >
+      <ArticleHistory :article-ipfs-array="articleIpfsArray" />
+    </el-dialog>
   </div>
 </template>
 
@@ -142,7 +156,15 @@ export default {
       const year = this.hash.substring(2, 6)
       const date = this.hash.substring(6, 8)
       return `https://github.com/${this.githubId}/${this.githubRepo}/commits/source/source/_posts/${year}/${date}/${this.hash}.md`
-    }
+    },
+    githubBlogLink() {
+      return this.user.siteLink
+    },
+    githubBlogArticleLink() {
+      const year = this.hash.substring(2, 6)
+      const date = this.hash.substring(6, 8)
+      return `${this.user.siteLink}${year}/${date}/${this.hash}`
+    },
   },
   methods: {
     copy(val) {
@@ -161,9 +183,13 @@ export default {
 
 <style lang="less" scoped>
 .components-ipfs_all {
+  .ipfs_box {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
   .ipfs_all__icon {
     font-size: 20px;
-    cursor: pointer;
   }
   .ipfs_all__title {
     padding: 0;

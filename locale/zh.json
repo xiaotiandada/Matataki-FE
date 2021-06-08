@@ -424,6 +424,7 @@
     "whereToPublishHelp": "查看更详细的信息",
     "publishToIPFS": "IPFS",
     "publishToGithub": "独立子站",
+    "syncTagsToIndieBlog": "同步标签到独立子站",
     "originalStatement": "原创声明",
     "statement": "勾选本原创声明，即代表您确认并承诺该文章，包括文章中的使用的图片等其他元素，是由您本人（或持有该账号之组织）独立创作完成，或者已取得原作权利人的使用许可。有如下情况的文章请勿勾选本原创声明：",
     "statement1": "1.歪曲、篡改、抄袭、剽窃他人创作而产生的作品，",
@@ -842,6 +843,7 @@
     "link": "独立子站",
     "fileHash": "文件 Hash",
     "filePath": "存储地址",
+    "indieArticle": "在独立子站阅读本文",
     "description": "本文内容存储于 GitHub"
   },
   "group": {
@@ -1666,8 +1668,11 @@
     "keywords": "关键字",
     "author": "作者",
     "timezone": "时间区域",
+    "timezoneHelp": "为您的博客设置时区",
     "theme": "主题名称",
+    "themeHelp": "为您的博客设置主题，主题切换太频繁会偶尔出现页面空白，请等待或稍后重试",
     "save": "保存",
+    "config-guide": "设置指南",
     "siteLink": "网站链接",
     "follow-this-steps-to-create-indie-blog": "您尚未创建独立子站，通过以下步骤即可创建您的独立子站",
     "bind-github-account": "绑定 GitHub 账户",
@@ -1704,7 +1709,7 @@
   },
   "languages": {
     "en": "English",
-    "zh": "简体中文",
+    "zh-CN": "简体中文",
     "fr": "français",
     "zh-TW": "繁體中文（台灣）",
     "zh-HK": "繁體中文（港澳地區）",

@@ -29,7 +29,6 @@
             :github-id="githubId"
             :github-repo="githubRepo"
           />
-          &nbsp;
           <span class="article-head__ipfs">{{ isPublishedOnGithub ? $t('indie-blog.page-title') : 'IPFS' }}</span>
         </div>
       </div>
@@ -120,6 +119,7 @@ export default {
     this.getUserInfo(this.article.uid)
     await this.getTokenUser(this.article.uid)
     await this.getGithubId()
+    console.log(this.article)
   },
   methods: {
     // 主要获取关注状态
@@ -149,7 +149,8 @@ export default {
       try {
         const res = await this.$API.getIpfsData(this.article.hash)
         if (res.code !== 0) {
-          this.$message.error(res.message)
+          // 不需要 message 通知
+          console.log(res.message)
           return
         }
         this.githubId = res.data.github_id
@@ -266,6 +267,7 @@ export default {
   font-weight: bold;
   color: rgba(84, 45, 224, 1);
   line-height: 14px;
+  margin-left: 4px;
 }
 
 .author-info {
