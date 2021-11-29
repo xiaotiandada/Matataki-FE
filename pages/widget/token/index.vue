@@ -53,19 +53,19 @@ export default {
     }
   
   },
-  async asyncData({ $axios, route }) {
-    let id = route.query.id
-    try {
-      const res = await $axios.get(`/minetoken/${id}`)
-      if (res.code === 0) {
-        return { tokenData: res.data }
-      } else {
-        return { tokenData: {} }
-      }
-    } catch(e) {
-      return { tokenData: {} }
-    }
-  },
+  // async asyncData({ $axios, route }) {
+  //   let id = route.query.id
+  //   try {
+  //     const res = await $axios.get(`/minetoken/${id}`)
+  //     if (res.code === 0) {
+  //       return { tokenData: res.data }
+  //     } else {
+  //       return { tokenData: {} }
+  //     }
+  //   } catch(e) {
+  //     return { tokenData: {} }
+  //   }
+  // },
   created() {
     if (process.browser) {
       if (!this.$route.query.id) {
