@@ -355,7 +355,6 @@ export default {
       return ''
     }
   },
-  async asyncData() {},
   async mounted() {
     await this.getTokenBySymbol()
   },
