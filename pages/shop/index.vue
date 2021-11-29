@@ -98,7 +98,7 @@ import articleCard from '@/components/articleCard/index.vue'
 import tags from '@/components/tags/index.vue'
 import buttonLoadMore from '@/components/button_load_more/index.vue'
 
-import { recommend, paginationData, getTags } from '@/api/async_data_api.js'
+// import { recommend, paginationData, getTags } from '@/api/async_data_api.js'
 // import banner from '@/components/banner/index.vue'
 import bannerMatataki from '@/components/banner/banner_matataki.vue'
 import recommendSlide from '~/components/recommendSlide/index.vue'
@@ -141,34 +141,34 @@ export default {
       tagCards: []
     }
   },
-  async asyncData({ $axios }) {
-    const initData = Object.create(null)
-    try {
-      // 推荐
-      const res = await recommend($axios, 2)
-      if (res.code === 0) initData.recommend = res.data
-      else initData.recommend = [{}, {}, {}, {}, {}]
+  // async asyncData({ $axios }) {
+  //   const initData = Object.create(null)
+  //   try {
+  //     // 推荐
+  //     const res = await recommend($axios, 2)
+  //     if (res.code === 0) initData.recommend = res.data
+  //     else initData.recommend = [{}, {}, {}, {}, {}]
 
-      // 内容列表
-      const params = {
-        channel: 2,
-        extra: 'short_content'
-      }
-      const resPagination = await paginationData($axios, 'homeTimeRanking', params)
-      if (resPagination.code === 0) initData.paginationData = resPagination.data.list
-      else initData.paginationData = []
+  //     // 内容列表
+  //     const params = {
+  //       channel: 2,
+  //       extra: 'short_content'
+  //     }
+  //     const resPagination = await paginationData($axios, 'homeTimeRanking', params)
+  //     if (resPagination.code === 0) initData.paginationData = resPagination.data.list
+  //     else initData.paginationData = []
 
-      // tags
-      const resTag = await getTags($axios, 'product')
-      if (resTag.code === 0) initData.tags = resTag.data
-      else initData.tags = []
+  //     // tags
+  //     const resTag = await getTags($axios, 'product')
+  //     if (resTag.code === 0) initData.tags = resTag.data
+  //     else initData.tags = []
 
-      return { initData }
-    } catch (error) {
-      console.log(error)
-      return { initData }
-    }
-  },
+  //     return { initData }
+  //   } catch (error) {
+  //     console.log(error)
+  //     return { initData }
+  //   }
+  // },
   created() {
     this.recommendList = this.initData.recommend
     this.articleCardData[0].articles = this.initData.paginationData

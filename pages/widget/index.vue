@@ -37,19 +37,19 @@ export default {
       return this.articleData.short_content ? filterOutHtmlTags(this.articleData.short_content) : '没有简介信息'
     }
   },
-  async asyncData({ $axios, route }) {
-    let id = route.query.id
-    try {
-      const res = await $axios.get(`/p/${id}`)
-      if (res.code === 0) {
-        return { articleData: res.data }
-      } else {
-        return { articleData: {} }
-      }
-    } catch(e) {
-      return { articleData: {} }
-    }
-  },
+  // async asyncData({ $axios, route }) {
+  //   let id = route.query.id
+  //   try {
+  //     const res = await $axios.get(`/p/${id}`)
+  //     if (res.code === 0) {
+  //       return { articleData: res.data }
+  //     } else {
+  //       return { articleData: {} }
+  //     }
+  //   } catch(e) {
+  //     return { articleData: {} }
+  //   }
+  // },
   created() {
     if (process.browser) {
       if (!this.$route.query.id) {

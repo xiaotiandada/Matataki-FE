@@ -45,21 +45,20 @@ export default {
     avatar() {
       return this.userData.avatar ?  this.$ossProcess(this.userData.avatar, { h: 120 }) : ''
     }
-  
   },
-  async asyncData({ $axios, route }) {
-    let id = route.query.id
-    try {
-      const res = await $axios.get(`/user/${id}`)
-      if (res.code === 0) {
-        return { userData: res.data }
-      } else {
-        return { userData: {} }
-      }
-    } catch(e) {
-      return { userData: {} }
-    }
-  },
+  // async asyncData({ $axios, route }) {
+  //   let id = route.query.id
+  //   try {
+  //     const res = await $axios.get(`/user/${id}`)
+  //     if (res.code === 0) {
+  //       return { userData: res.data }
+  //     } else {
+  //       return { userData: {} }
+  //     }
+  //   } catch(e) {
+  //     return { userData: {} }
+  //   }
+  // },
   created() {
     if (process.browser) {
       if (!this.$route.query.id) {

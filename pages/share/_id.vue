@@ -154,7 +154,7 @@
 import { mapGetters } from 'vuex'
 import xss from 'xss'
 
-import { extractChar } from '@/utils/reg'
+// import { extractChar } from '@/utils/reg'
 import { getCookie } from '@/utils/cookie'
 import shareHeader from '@/components/share_page/share_header'
 import shareMain from '@/components/share_page/share_main'
@@ -308,31 +308,31 @@ export default {
       }
     }
   },
-  async asyncData({ $axios, route, req }) {
-    // 获取cookie token
-    let accessToken = ''
-    // 请检查您是否在服务器端
-    if (process.server) {
-      const cookie = req && req.headers.cookie ? req.headers.cookie : ''
-      const token = extractChar(cookie, 'ACCESS_TOKEN=', ';')
-      accessToken = token ? token[0] : ''
-    }
-    if (process.browser) {
-      accessToken = getCookie('ACCESS_TOKEN')
-    }
+  // async asyncData({ $axios, route, req }) {
+  //   // 获取cookie token
+  //   let accessToken = ''
+  //   // 请检查您是否在服务器端
+  //   if (process.server) {
+  //     const cookie = req && req.headers.cookie ? req.headers.cookie : ''
+  //     const token = extractChar(cookie, 'ACCESS_TOKEN=', ';')
+  //     accessToken = token ? token[0] : ''
+  //   }
+  //   if (process.browser) {
+  //     accessToken = getCookie('ACCESS_TOKEN')
+  //   }
 
-    const res = await $axios({
-      url: `/p/${route.params.id}`,
-      methods: 'get',
-      headers: { 'x-access-token': accessToken }
-    })
+  //   const res = await $axios({
+  //     url: `/p/${route.params.id}`,
+  //     methods: 'get',
+  //     headers: { 'x-access-token': accessToken }
+  //   })
 
-    if (res.code === 0) {
-      return { content: res.data }
-    } else {
-      console.error(res.message)
-    }
-  },
+  //   if (res.code === 0) {
+  //     return { content: res.data }
+  //   } else {
+  //     console.error(res.message)
+  //   }
+  // },
   created() {
     // 无id
     const { id = '' } = this.$route.params
